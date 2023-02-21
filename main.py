@@ -1,13 +1,20 @@
-import telebot
+from pyrogram import Client, filters
 import random
-bot = telebot.TeleBot("hash")
 
-list=["Круто!", "Превосходно!","Восхитительно!","Хайпово","Супер!","Прелестно!"]
+api_id = id
+api_hash = "hash"
+app=Client("my_account", api_id=api_id, api_hash=api_hash)
 
-@bot.message_handler(content_types=['text'])
-def get_text_messages(message):
-    if "Цена на товар снижена:" in message.text:
-        bot.send_message(message.chat.id, "Ого")
-        bot.send_message(message.chat.id, list[random.randint(0, 5)])
+list=["Круто!", "Превосходно!","Восхитительно!","Хайпово","Супер!","Прелестно!", "Юрец - молодец!", "Спасибо Юрцу за работу!"]
 
-bot.polling(none_stop=True, interval=0)
+@app.on_message(filters.text)
+async def echo(client, message):
+    if "Товар снова в наличии" in message.text:
+        await message.reply(('Ого! ' + list[random.randint(0, 7)]))
+    elif "Появился новый товар" in message.text:
+        await message.reply(('Ого! ' + list[random.randint(0, 7)]))
+    elif "Цена на товар снижена" in message.text:
+        await message.reply(('Ого! ' + list[random.randint(0, 7)]))
+
+
+app.run()
