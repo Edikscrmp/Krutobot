@@ -1,6 +1,6 @@
 import telebot
 import random
-bot = telebot.TeleBot("5575414666:AAGTvlmE6vcuSFuQvuEMkYdiuZiN-0JmupY")
+bot = telebot.TeleBot("hash")
 
 list=["Круто!", "Превосходно!","Восхитительно!","Хайпово","Супер!","Прелестно!"]
 
